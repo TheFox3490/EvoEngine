@@ -4,7 +4,7 @@
 using namespace rt;
 
 int main(void) {
-	Rstring str = "test";
-	printf_s("%s\n", (char*)str);
+	Rstring str = "is work!";
+	printf_s("%s\n", (char*)(Rstring("Test, ") + str));
 	return 0;
 }

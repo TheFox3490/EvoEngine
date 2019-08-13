@@ -49,7 +49,6 @@ namespace rt {
 		this->ptr[this->lengh] = '\0';
 	}
 	Rstring Rstring::operator+(const char* ptr) {
-		if (this->ptr != nullptr) delete[] this->ptr;
 		uint64 size = this->lengh + rstrlen(ptr);
 		char* ptr2 = new char[size + 1];
 		uint64 i = 0;
@@ -59,6 +58,7 @@ namespace rt {
 		for (uint64 j = 0; i < size; j++, i++) 
 			ptr2[i] = ptr[j];
 
+		ptr2[size] = '\0';
 		return ptr2;
 	}
 	Rstring Rstring::operator+(char* ptr) {
@@ -67,7 +67,6 @@ namespace rt {
 		return ptr2;
 	}
 	Rstring Rstring::operator+(const Rstring& str) {
-		if (this->ptr != nullptr) delete[] this->ptr;
 		uint64 size = this->lengh + str.lengh;
 		char* ptr2 = new char[size + 1];
 		uint64 i = 0;
@@ -76,7 +75,7 @@ namespace rt {
 
 		for (uint64 j = 0; i < size; j++, i++) 
 			ptr2[i] = str.ptr[j];
-
+		ptr2[size] = '\0';
 		return ptr2;
 	}
 	void Rstring::operator+=(const char* ptr) {
