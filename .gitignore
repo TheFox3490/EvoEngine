@@ -34,3 +34,19 @@
 src/x64/
 
 src/\.vs/
+
+*.pdb
+
+*.idb
+
+*.lastbuildstate
+
+*.tlog
+
+*.log
+
+*.ilk
+
+*.enc
+
+*.db

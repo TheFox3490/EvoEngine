@@ -4,7 +4,11 @@
 
 using namespace rt;
 
+<<<<<<< Updated upstream
 void draw_scene(Rstring *str) {
+=======
+void draw_scene(Rstring* str) {
+>>>>>>> Stashed changes
 	for (uint64 i = 0; i < obj_size; i++)
 		printf("%s\n", (const char*)str[i]);
 }
