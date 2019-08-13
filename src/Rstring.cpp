@@ -1,0 +1,120 @@
+#include "Rstring.h"
+
+namespace rt {
+	uint64 rstrlen(const char* ptr) {
+		uint64 i = 0;
+		while (ptr[i] != '\0') i++;
+		return i;
+	}
+	Rstring::Rstring() {
+		this->ptr = nullptr;
+		this->lengh = 0;
+	}
+	Rstring::Rstring(const char* ptr) {
+		this->lengh = rstrlen(ptr);
+		this->ptr = new char[this->lengh + 1];
+		for (uint64 i = 0; i < this->lengh; i++) 
+			this->ptr[i] = ptr[i];
+		
+		this->ptr[this->lengh] = '\0';
+	}
+	Rstring::Rstring(const Rstring& str) {
+		this->lengh = str.lengh;
+		this->ptr = new char[this->lengh + 1];
+		for (uint64 i = 0; i < this->lengh; i++)
+			this->ptr[i] = str.ptr[i];
+		
+		this->ptr[this->lengh] = '\0';
+	}
+	void Rstring::operator=(const char* ptr) {
+		if (this->ptr != nullptr) delete[] this->ptr;
+		this->lengh = rstrlen(ptr);
+		this->ptr = new char[this->lengh + 1];
+		for (uint64 i = 0; i < this->lengh; i++)
+			this->ptr[i] = ptr[i];
+
+		this->ptr[this->lengh] = '\0';
+	}
+	void Rstring::operator=(char* ptr) {
+		this->operator=((const char*)ptr);
+		delete[] ptr;
+	}
+	void Rstring::operator=(const Rstring& str) {
+		if (this->ptr != nullptr) delete[] this->ptr;
+		this->lengh = rstrlen(ptr);
+		this->ptr = new char[this->lengh + 1];
+		for (uint64 i = 0; i < this->lengh; i++)
+			this->ptr[i] = ptr[i];
+
+		this->ptr[this->lengh] = '\0';
+	}
+	Rstring Rstring::operator+(const char* ptr) {
+		if (this->ptr != nullptr) delete[] this->ptr;
+		uint64 size = this->lengh + rstrlen(ptr);
+		char* ptr2 = new char[size + 1];
+		uint64 i = 0;
+		for (; i < this->lengh; i++) 
+			ptr2[i] = this->ptr[i];
+
+		for (uint64 j = 0; i < size; j++, i++) 
+			ptr2[i] = ptr[j];
+
+		return ptr2;
+	}
+	Rstring Rstring::operator+(char* ptr) {
+		char* ptr2 = this->operator+((const char*)ptr);
+		delete[] ptr;
+		return ptr2;
+	}
+	Rstring Rstring::operator+(const Rstring& str) {
+		if (this->ptr != nullptr) delete[] this->ptr;
+		uint64 size = this->lengh + str.lengh;
+		char* ptr2 = new char[size + 1];
+		uint64 i = 0;
+		for (; i < this->lengh; i++) 
+			ptr2[i] = this->ptr[i];
+
+		for (uint64 j = 0; i < size; j++, i++) 
+			ptr2[i] = str.ptr[j];
+
+		return ptr2;
+	}
+	void Rstring::operator+=(const char* ptr) {
+		this->operator=(this->operator+(ptr));
+	}
+	void Rstring::operator+=(char* ptr) {
+		this->operator=(this->operator+(ptr));
+	}
+	void Rstring::operator+=(const Rstring& str) {
+		this->operator=(this->operator+(ptr));
+	}
+	bool Rstring::operator==(const char* ptr) {
+		if (rstrlen(ptr) != this->lengh)
+			return false;
+		for (uint64 i = 0; i < this->lengh; i++)
+			if (this->ptr[i] != ptr[i])
+				return false;
+		return true;
+	}
+	bool Rstring::operator!=(const char* ptr) {
+		return !this->operator==(ptr);
+	}
+	uint64 Rstring::size() {
+		return lengh;
+	}
+	Rstring::operator char* () {
+		char* str = new char[this->lengh + 1];
+		for (uint64 i = 0; i < this->lengh; i++)
+			str[i] = this->ptr[i];
+		str[this->lengh] = '\0';
+		return str;
+	}
+	Rstring::operator const char* () {
+		return this->ptr;
+	}
+	Rstring::~Rstring() {
+		if (this->ptr != nullptr) delete[] this->ptr;
+		this->ptr = nullptr;
+		this->lengh = 0;
+	}
+}
