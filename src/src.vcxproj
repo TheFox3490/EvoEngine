@@ -125,10 +125,12 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rstring.cpp" />
+    <ClCompile Include="Rvector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rtypes.h" />
     <ClInclude Include="Rstring.h" />
+    <ClInclude Include="Rvector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

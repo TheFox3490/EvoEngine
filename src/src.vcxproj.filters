@@ -21,12 +21,18 @@
     <ClCompile Include="Rstring.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Rvector.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Rstring.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="rtypes.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Rvector.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
