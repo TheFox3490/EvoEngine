@@ -13,10 +13,16 @@ namespace rt {
 	Rstring::Rstring(const char* ptr) {
 		this->lengh = rstrlen(ptr);
 		this->ptr = new char[this->lengh + 1];
-		for (uint64 i = 0; i < this->lengh; i++) 
+		for (uint64 i = 0; i < this->lengh; i++)
 			this->ptr[i] = ptr[i];
-		
+
 		this->ptr[this->lengh] = '\0';
+	}
+	Rstring::Rstring(char ch) {
+		this->lengh = 1;
+		this->ptr = new char[2];
+		this->ptr[0] = ch;
+		this->ptr[1] = '\0';
 	}
 	Rstring::Rstring(const Rstring& str) {
 		this->lengh = str.lengh;
@@ -38,6 +44,13 @@ namespace rt {
 	void Rstring::operator=(char* ptr) {
 		this->operator=((const char*)ptr);
 		delete[] ptr;
+	}
+	void Rstring::operator=(char ch) {
+		if (this->ptr != nullptr) delete[] this->ptr;
+		this->lengh = 1;
+		this->ptr = new char[2];
+		this->ptr[0] = ch;
+		this->ptr[1] = '\0';
 	}
 	void Rstring::operator=(const Rstring& str) {
 		if (this->ptr != nullptr) delete[] this->ptr;
