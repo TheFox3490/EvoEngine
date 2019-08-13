@@ -101,12 +101,27 @@ namespace rt {
 	uint64 Rstring::size() {
 		return lengh;
 	}
+	char& Rstring::operator[](uint64 id) {
+		return this->ptr[id];
+	}
 	Rstring::operator char* () {
 		char* str = new char[this->lengh + 1];
 		for (uint64 i = 0; i < this->lengh; i++)
 			str[i] = this->ptr[i];
 		str[this->lengh] = '\0';
 		return str;
+	}
+	void Rstring::operator+=(char ptr) {
+		char* s = new char[2];
+		s[0] = ptr;
+		s[1] = '\0';
+		this->operator+=(s);
+	}
+	Rstring Rstring::operator+(char ptr) {
+		char* s = new char[2];
+		s[0] = ptr;
+		s[1] = '\0';
+		return this->operator+(s);
 	}
 	Rstring::operator const char* () {
 		return this->ptr;

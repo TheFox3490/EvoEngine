@@ -4,7 +4,7 @@
 using namespace rt;
 
 int main(void) {
-	Rstring str = "is work!";
-	printf_s("%s\n", (char*)(Rstring("Test, ") + str));
+	Rstring str = "fork!";
+	printf_s("%s!\n", (const char*)(Rstring("Test, ") + str[0]));
 	return 0;
 }
