@@ -9,9 +9,11 @@ namespace rt {
 		Rstring();
 		Rstring(const char* ptr);
 		Rstring(const Rstring& str);
+		Rstring(char ch);
 		void operator=(const char* ptr);
 		void operator=(char* ptr);
 		void operator=(const Rstring& str);
+		void operator=(char ch);
 		Rstring operator+(const char* ptr);
 		Rstring operator+(char ptr);
 		Rstring operator+(char* ptr);
