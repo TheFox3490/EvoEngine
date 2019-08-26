@@ -50,3 +50,5 @@ src/\.vs/
 *.enc
 
 *.db
+
+src/src.pro.user
