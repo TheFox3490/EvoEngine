@@ -1,6 +1,5 @@
 #pragma once
 #include "rtypes.h"
-#define ïòí_ïòõ ptr 
 
 namespace rt {
 	uint64 rstrlen(const char* ptr);
@@ -30,7 +29,7 @@ namespace rt {
 		operator const char* ();
 		~Rstring();
 	private:
-		char* ïòí_ïòõ;
+        char* ptr;
 		uint64 lengh;
 	};
 

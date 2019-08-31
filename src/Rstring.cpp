@@ -2,6 +2,7 @@
 
 namespace rt {
 	uint64 rstrlen(const char* ptr) {
+        if(ptr == nullptr) return 0;
 		uint64 i = 0;
 		while (ptr[i] != '\0') i++;
 		return i;
