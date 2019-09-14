@@ -8,7 +8,7 @@
 #define CHAR_T 4
 #define CHAR16_T 5
 #define CHAR32_T 6
-#define BOOL 7
+#define BOOLEAN 7
 #define STR 8
 #define PTR 9
 //method
