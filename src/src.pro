@@ -5,7 +5,11 @@ CONFIG -= qt
 
 SOURCES += \
         Rstring.cpp \
+<<<<<<< HEAD
         Rvector.cpp \
+=======
+        Rvar.cpp \
+>>>>>>> 0.1_Alpha_1
         main.cpp
 
 HEADERS += \
