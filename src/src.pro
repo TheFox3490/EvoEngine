@@ -5,7 +5,6 @@ CONFIG -= qt
 
 SOURCES += \
         Rstring.cpp \
-        Rvar.cpp \
         Rvector.cpp \
         main.cpp
 

@@ -65,15 +65,15 @@ namespace rt {
 	Rstring Rstring::operator+(const char* ptr) {
 		Rstring ptr2;
 		ptr2.lengh = this->lengh + rstrlen(ptr);
-		ptr2.ptr = new char[ptr2.lengh + 1];
+        ptr2.ptr = new char[this->lengh + rstrlen(ptr) + 1];
 		uint64 i = 0;
 		for (; i < this->lengh; i++) 
 			ptr2.ptr[i] = this->ptr[i];
 
-		for (uint64 j = 0; i < ptr2.lengh; j++, i++) 
+        for (uint64 j = 0; j < rstrlen(ptr); j++, i++)
 			ptr2.ptr[i] = ptr[j];
 
-		ptr2.ptr[ptr2.lengh] = '\0';
+        ptr2.ptr[this->lengh + rstrlen(ptr)] = '\0';
 		return ptr2;
 	}
 	Rstring Rstring::operator+(char* ptr) {
